@@ -38,15 +38,16 @@ class QrCodeExtension extends Twig_Extension implements ContainerAwareInterface
         );
     }
 
-    /**
-     * Creates the QR code URL corresponding to the given message and extension.
-     *
-     * @param $text
-     * @param string $extension
-     * @param int $size
-     * @return mixed
-     */
-    public function qrcodeUrlFunction($text, $extension = 'png', $size = 200)
+	/**
+	 * Creates the QR code URL corresponding to the given message and extension.
+	 *
+	 * @param $text
+	 * @param string $extension
+	 * @param int $size
+	 * @param int $padding
+	 * @return mixed
+	 */
+    public function qrcodeUrlFunction($text, $extension = 'png', $size = 200, $padding = 16)
     {
         $router = $this->container->get('router');
 
@@ -54,6 +55,7 @@ class QrCodeExtension extends Twig_Extension implements ContainerAwareInterface
             'text' => $text,
             'extension' => $extension,
             'size' => $size,
+			'padding' => $padding
         ), true);
 
         return $url;

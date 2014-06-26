@@ -23,7 +23,7 @@ use Symfony\Component\HttpFoundation\Request;
 class QrCodeController extends Controller
 {
     /**
-     *
+     *2
      * @Route("/{text}.{extension}", name="endroid_qrcode", requirements={"text"="[\w\W]+", "extension"="jpg|png|gif"})
      *
      */
@@ -33,6 +33,9 @@ class QrCodeController extends Controller
         if ($size = $request->get('size')) {
             $qrCode->setSize($size);
         }
+		if ($padding = $request->get('padding')) {
+			$qrCode->setPadding($padding);
+		}
         $qrCode->setText($text);
         $qrCode = $qrCode->get($extension);
 
